@@ -1,0 +1,2 @@
+// cypress/fixtures/message.txt
+Hello, this is an example file.
