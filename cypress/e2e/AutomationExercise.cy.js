@@ -108,7 +108,7 @@ describe('AutomationExercise', () => {
     // 8. Verify that 'Logged in as username' is visible
     cy.contains('tester').should('exist');
     // 9. Click 'Logout' button
-    cy.get('[data-qa="logout-button"]').click();
+    cy.get('.shop-menu > .nav > :nth-child(4) > a').click();
     // 10. Verify that user is navigated to login page
     cy.url().should('include', '/login');
 })
@@ -122,7 +122,7 @@ it('TC 05 Register User with existing email', () =>{
    cy.get('.signup-form').should('be.visible');
    //6. Enter name and email address
    cy.get('input[name="name"]').type('tester');
-   cy.get('[data-qa="signup-email"]').type('tester5@yopmail.com');
+   cy.get('[data-qa="signup-email"]').type('tester123@yopmail.com');
    //7. Click 'Signup' button
    cy.get('[data-qa="signup-button"]').click();
    //8. Verify error 'Email Address already exist!' is visible
@@ -164,7 +164,7 @@ it('TC 07 Verify Test Cases Page', () =>{
   // 5. Verify user is navigated to test cases page successfully
   cy.url().should('include', '/test_cases');
 })
-it.only('TC 08 Verify All Products and product detail page', () =>{
+it('TC 08 Verify All Products and product detail page', () =>{
   // 3. Verify that home page is visible successfully
   cy.get('a[href="/products"]').should('be.visible');
   // 4. Click on 'Products' button
