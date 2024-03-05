@@ -6,7 +6,7 @@ describe("AutomationExercise", () => {
     cy.visit("https://www.automationexercise.com");
   });
 
-  it("TC 01 Register User", () => {
+  it.only("TC 01 Register User", () => {
     //3. Verify that home page is visible successfully
 
     cy.get('a[href="/login"]').should("be.visible");
