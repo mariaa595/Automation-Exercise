@@ -353,7 +353,7 @@ describe("AutomationExercise", () => {
 
   })
 
-  it.only("TC 12 Add Products in Cart", () =>{
+  it("TC 12 Add Products in Cart", () =>{
 
     // 3. Verify that home page is visible successfully
     cy.get('.features_items > .title').contains('Features Items');
