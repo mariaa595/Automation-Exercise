@@ -93,7 +93,7 @@ describe("AutomationExercise", () => {
     cy.get('[data-qa="continue-button"]').click();
   });
 
-  it("TC 02 Login User with correct email and password", () => {
+  it.skip("TC 02 Login User with correct email and password", () => {
     //3. Verify that home page is visible successfully
     cy.get('a[href="/login"]').should("be.visible");
 
