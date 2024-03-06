@@ -6,7 +6,7 @@ describe("AutomationExercise", () => {
     cy.visit("https://www.automationexercise.com");
   });
 
-  it.only("TC 01 Register User", () => {
+  it("TC 01 Register User", () => {
     //3. Verify that home page is visible successfully
 
     cy.get('a[href="/login"]').should("be.visible");
@@ -93,7 +93,7 @@ describe("AutomationExercise", () => {
     cy.get('[data-qa="continue-button"]').click();
   });
 
-  it.skip("TC 02 Login User with correct email and password", () => {
+  it("TC 02 Login User with correct email and password", () => {
     //3. Verify that home page is visible successfully
     cy.get('a[href="/login"]').should("be.visible");
 
