@@ -287,5 +287,105 @@ describe("AutomationExercise", () => {
     cy.get("label").should("have.text", "Quantity:");
  
   });
+
+  it("TC 09 Search Product", ()=>{
+    // 3. Verify that home page is visible successfully
+    cy.get('[href="/products"]').should("be.visible");
+
+    // 4. Click on 'Products' button
+    cy.get('[href="/products"]').click();
+
+
+    // 5. Verify user is navigated to ALL PRODUCTS page successfully
+    cy.url().should("include", "/products");
+    cy.get('.title').contains("All Products")
+
+    // 6. Enter product name in search input and click search button
+    cy.get('#search_product').type("Winter Top");
+    cy.get('#submit_search').click();
+
+    // 7. Verify 'SEARCHED PRODUCTS' is visible
+    cy.get('.title').contains("Searched Products");
+
+    // 8. Verify all the products related to search are visible
+    cy.get('.productinfo > p').contains('Winter Top');
+  })
+
+  it("TC 10 Verify Subscription in home page", ()=> {
+    // 3. Verify that home page is visible successfully
+    cy.get('.features_items > .title').contains('Features Items');
+
+    // 4. Scroll down to footer
+    cy.get('#susbscribe_email').scrollIntoView();
+
+    // 5. Verify text 'SUBSCRIPTION'
+    cy.get('.single-widget > h2').should('have.text', "Subscription");
+
+    // 6. Enter email address in input and click arrow button
+    cy.get('#susbscribe_email').type("tester123@yopmail.com");
+    cy.get('#subscribe').click();
+
+    // 7. Verify success message 'You have been successfully subscribed!' is visible
+    cy.contains('You have been successfully subscribed!').should('exist');
+
+  })
+
+  it("TC 11 Verify Subscription in Cart page", ()=>{
+    
+    // 3. Verify that home page is visible successfully
+    cy.get('a[href="/view_cart"]').should("be.visible");
+
+    // 4. Click 'Cart' button
+    cy.get('.shop-menu > .nav > :nth-child(3)').click();
+
+    // 5. Scroll down to footer
+    cy.get('#susbscribe_email').scrollIntoView();
+
+    // 6. Verify text 'SUBSCRIPTION'
+    cy.get('.single-widget > h2').should('have.text', "Subscription");
+
+    // 7. Enter email address in input and click arrow button
+    cy.get('#susbscribe_email').type("tester123@yopmail.com");
+    cy.get('#subscribe').click();
+
+    // 8. Verify success message 'You have been successfully subscribed!' is visible
+    cy.contains('You have been successfully subscribed!').should('exist');
+
+  })
+
+  it.only("TC 12 Add Products in Cart", () =>{
+
+    // 3. Verify that home page is visible successfully
+    cy.get('.features_items > .title').contains('Features Items');
+
+    // 4. Click 'Products' button
+    cy.get('[href="/products"]').click();
+
+    // 5. Hover over first product and click 'Add to cart'
+    cy.get('.features_items > :nth-child(3) > .product-image-wrapper > .single-products > .productinfo').click();
+    cy.get('.features_items > :nth-child(3) > .product-image-wrapper > .single-products > .productinfo > .btn').click();
+    // 6. Click 'Continue Shopping' button
+    cy.get('.modal-footer > .btn').click();
+    // 7. Hover over second product and click 'Add to cart'
+    cy.get(':nth-child(5) > .product-image-wrapper > .single-products > .productinfo').click();
+    cy.get('.features_items > :nth-child(5) > .product-image-wrapper > .single-products > .productinfo > .btn').click();
+    // 8. Click 'View Cart' button
+    cy.get('u').click();
+
+    // 9. Verify both products are added to Cart
+    cy.get('#product-1 > .cart_description > h4 > a').should('exist');
+    cy.get('#product-3 > .cart_description > h4 > a').should('exist');
+
+    // 10. Verify their prices, quantity and total price
+    cy.get('#product-1 > .cart_price > p').should('be.visible');
+    cy.get('#product-1 > .cart_quantity').should('exist');
+    cy.get('#product-1 > .cart_total > .cart_total_price').should('exist');
+
+    cy.get('#product-3 > .cart_price > p').should('be.visible');
+    cy.get('#product-3 > .cart_quantity').should('exist');
+    cy.get('#product-3 > .cart_total > .cart_total_price').should('exist');
+
+
+  })
 });
 
