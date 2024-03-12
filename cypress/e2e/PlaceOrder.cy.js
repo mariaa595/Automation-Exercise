@@ -198,7 +198,7 @@ describe("PlaceOrder", ()=>{
         cy.get('[data-qa="continue-button"]').click();
         
     })
-    it.only("Place Order: Login before Checkout", ()=>{
+    it("TC 16 Place Order: Login before Checkout", ()=>{
         // 3. Verify that home page is visible successfully
         cy.get('a[href="/login"]').should("be.visible");
         // 4. Click 'Signup / Login' button

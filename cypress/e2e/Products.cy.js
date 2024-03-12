@@ -91,7 +91,7 @@ describe("Products", () => {
 
   })
 
-  it.only("TC 13 Verify Product quantity in Cart", ()=>{
+  it("TC 13 Verify Product quantity in Cart", ()=>{
     // 3. Verify that home page is visible successfully
     cy.get('.features_items > .title').contains('Features Items');
     // 4. Click 'View Product' for any product on home page
@@ -113,5 +113,32 @@ describe("Products", () => {
     
     
   })
+  it("TC 17: Remove Products From Cart", ()=>{
+    // 3. Verify that home page is visible successfully
+    cy.get('.features_items > .title').contains('Features Items');
+    // 4. Add products to cart
+    cy.get('.features_items > :nth-child(3) > .product-image-wrapper > .single-products > .productinfo > .btn').click();
+
+    // 5. Click 'Cart' button
+    cy.get('u').click();
+
+    // 6. Verify that cart page is displayed
+    cy.get(".active").contains("Shopping Cart");
+    // 7. Click 'X' button corresponding to particular product
+    cy.get('.fa.fa-times').click();
+    // 8. Verify that product is removed from the cart
+    cy.get('#empty_cart').should('exist');
+  })
+
+  it.ony("TC 18: View Category Products",()=>{
+  // 3. Verify that categories are visible on left side bar
+  
+  // 4. Click on 'Women' category
+  // 5. Click on any category link under 'Women' category, for example: Dress
+  // 6. Verify that category page is displayed and confirm text 'WOMEN - TOPS PRODUCTS'
+  // 7. On left side bar, click on any sub-category link of 'Men' category
+  // 8. Verify that user is navigated to that category page
+  })
+
 });
 
