@@ -130,14 +130,75 @@ describe("Products", () => {
     cy.get('#empty_cart').should('exist');
   })
 
-  it.ony("TC 18: View Category Products",()=>{
+  it("TC 18: View Category Products",()=>{
   // 3. Verify that categories are visible on left side bar
-  
+  cy.get('.left-sidebar > :nth-child(1)').contains('Category');
   // 4. Click on 'Women' category
+  cy.get('[href="#Women"]').click();
   // 5. Click on any category link under 'Women' category, for example: Dress
+  cy.get('[href="/category_products/1"]').click();
   // 6. Verify that category page is displayed and confirm text 'WOMEN - TOPS PRODUCTS'
+  cy.get('.title.text-center').contains('Women - Dress Products');
   // 7. On left side bar, click on any sub-category link of 'Men' category
+  cy.get('[href="#Men"]').click();
+  cy.get('[href="/category_products/6"]').click();
   // 8. Verify that user is navigated to that category page
+  cy.url().should("include", "/category_products/6");
+  cy.get('.title.text-center').contains('Men - Jeans Products');
+  })
+
+  it("TC 19: View & Cart Brand Products", ()=>{
+  // 3. Click on 'Products' button
+  cy.get('[href="/products"]').click();
+
+  // 4. Verify that Brands are visible on left side bar
+  cy.get('.brands_products').contains("Brands");
+
+  // 5. Click on any brand name
+  cy.get('[href="/brand_products/Polo"]').click();
+
+  // 6. Verify that user is navigated to brand page and brand products are displayed
+  cy.url().should("include", "/brand_products/Polo");
+  cy.get('.title.text-center').contains('Brand - Polo Products');
+
+  // 7. On left side bar, click on any other brand link
+  cy.get('[href="/brand_products/H&M"]').click();
+
+  // 8. Verify that user is navigated to that brand page and can see products
+  cy.get('.title.text-center').contains('Brand - H&M Products');
+
+  })
+
+  it('TC 20: Search Products and Verify Cart After Login', ()=>{
+  // 3. Click on 'Products' button]
+  cy.get('[href="/products"]').click();
+  // 4. Verify user is navigated to ALL PRODUCTS page successfully
+  cy.url().should("include", "/products");
+  cy.get('.title').contains("All Products");
+  // 5. Enter product name in search input and click search button
+  cy.get('#search_product').type('Tshirt');
+  cy.get('#submit_search').click();
+  // 6. Verify 'SEARCHED PRODUCTS' is visible
+  cy.get('.title').contains('Searched Products');
+  // 7. Verify all the products related to search are visible
+  cy.get(':nth-child(3) > .product-image-wrapper > .single-products > .productinfo > p').contains('Tshirt');
+
+  // 8. Add those products to cart
+  cy.get(':nth-child(3) > .product-image-wrapper > .single-products > .productinfo > .btn').click();
+
+  // 9. Click 'Cart' button and verify that products are visible in cart
+  cy.get('u').click();
+  cy.get('.col-sm-6 >.btn').click();
+  // 10. Click 'Signup / Login' button and submit login details
+  cy.get('.modal-body > :nth-child(2) > a > u').click();
+  cy.get('[data-qa="login-email"]').type("tester123@yopmail.com");
+  cy.get('[data-qa="login-password"]').type("12345678");
+  cy.get('[data-qa="login-button"]').click();
+
+  // 11. Again, go to Cart page
+  cy.get('.shop-menu > .nav > :nth-child(3) > a').click();
+  // 12. Verify that those products are visible in cart after login as well
+  cy.get('.cart_description > p').contains("Tshirts")
   })
 
 });
