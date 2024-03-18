@@ -200,6 +200,24 @@ describe("Products", () => {
   // 12. Verify that those products are visible in cart after login as well
   cy.get('.cart_description > p').contains("Tshirts")
   })
-
+  it('TC 21: Add review on product ', ()=>{
+  // 3. Click on 'Products' button
+  cy.get('[href="/products"]').click();
+  // 4. Verify user is navigated to ALL PRODUCTS page successfully
+  cy.url().should("include", "/products");
+  cy.get('.title').contains("All Products");
+  // 5. Click on 'View Product' button
+  cy.get('[href="/product_details/1"]').click();
+  // 6. Verify 'Write Your Review' is visible
+  cy.get('[href="#reviews"]').contains('Write Your Review');
+  // 7. Enter name, email and review
+  cy.get('#name').type('test');
+  cy.get('#email').type('tester@yopmail.com');
+  cy.get('#review').type('test');
+  // 8. Click 'Submit' button
+  cy.get('#button-review').click();
+  // 9. Verify success message 'Thank you for your review.'
+  
+  })
 });
 

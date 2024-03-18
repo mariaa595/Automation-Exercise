@@ -243,4 +243,84 @@ describe("PlaceOrder", ()=>{
         // 16. Click 'Delete Account' button
         // 17. Verify 'ACCOUNT DELETED!' and click 'Continue' button
     })
+    it.only("TC 23: Verify address details in checkout page ",()=>{
+        // 3. Verify that home page is visible successfully
+        cy.get('a[href="/login"]').should("be.visible");
+        // 4. Click 'Signup / Login' button
+        cy.get('a[href="/login"]').click();
+        // 5. Fill all details in Signup and create account
+        cy.url().should("include", "/login");
+
+        cy.get(".signup-form").should("be.visible");
+
+        cy.get('input[name="name"]').type("tester");
+
+        cy.get('[data-qa="signup-email"]').type("tester555@yopmail.com");
+
+        cy.get('[data-qa="signup-button"]').click();
+
+        cy.contains("Enter Account Information").should("exist");
+
+        cy.get(".login-form").should("be.visible");
+
+        cy.url().should("include", "/signup");
+
+        cy.get("#id_gender2").click();
+
+        cy.get('[data-qa="password"]').type("123456789");
+
+        cy.get('[data-qa="days"]').select("1");
+
+        cy.get('[data-qa="months"]').select("January");
+
+        cy.get('[data-qa="years"]').select("1999");
+
+        cy.get("#newsletter").click();
+
+        cy.get("#optin").click();
+
+        cy.get('[data-qa="first_name"]').type("maria");
+
+        cy.get('[data-qa="last_name"]').type("khan");
+        cy.get('[data-qa="address"]').type("house no 123");
+
+        cy.get('[data-qa="country"]').select("Canada");
+
+        cy.get('[data-qa="state"]').type("Alberta");
+
+        cy.get('[data-qa="city"]').type("Alberta");
+
+        cy.get('[data-qa="zipcode"]').type("1000");
+
+        cy.get('[data-qa="mobile_number"]').type("1234567890");
+
+        cy.get('[data-qa="create-account"]').click();
+        // 6. Verify 'ACCOUNT CREATED!' and click 'Continue' button
+        cy.contains("Account Created!").should("exist");
+        cy.get('[data-qa="account-created"]').should("be.visible");
+        cy.url().should("include", "/account_created");
+        cy.get('[data-qa="continue-button"]').click();
+        // 7. Verify ' Logged in as username' at top
+        cy.contains("tester").should("exist");
+        // 8. Add products to cart
+        cy.get('.features_items > :nth-child(3) > .product-image-wrapper > .single-products > .productinfo > .btn').click();
+        // 9. Click 'Cart' button
+        cy.get('u').click();
+        // 10. Verify that cart page is displayed
+        
+        // 11. Click Proceed To Checkout
+        cy.get('.col-sm-6 >.btn').click();
+        // 12. Verify that the delivery address is same address filled at the time registration of account
+        cy.get('#address_delivery > :nth-child(4)').should('have.text', 'house no 123' );
+        // 13. Verify that the billing address is same address filled at the time registration of account
+        cy.get('#address_invoice > :nth-child(4)').should('have.text', 'house no 123');
+           // 14. Click 'Delete Account' button
+        cy.get('.nav > :nth-child(5)').click();
+        // 15. Verify 'ACCOUNT DELETED!' and click 'Continue' button
+        cy.get('[data-qa="account-deleted"]').should('be.visible');
+        cy.get('[data-qa="continue-button"]').click();
+        
+
+
+    })
 });
