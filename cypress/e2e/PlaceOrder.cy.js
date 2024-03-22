@@ -255,7 +255,7 @@ describe("PlaceOrder", ()=>{
 
         cy.get('input[name="name"]').type("tester");
 
-        cy.get('[data-qa="signup-email"]').type("tester555@yopmail.com");
+        cy.get('[data-qa="signup-email"]').type("tester00@yopmail.com");
 
         cy.get('[data-qa="signup-button"]').click();
 
