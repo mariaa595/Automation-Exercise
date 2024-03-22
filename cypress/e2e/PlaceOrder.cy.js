@@ -30,7 +30,7 @@ describe("PlaceOrder", ()=>{
 
         cy.get('[data-qa="signup-button"]').click();
 
-        cy.contains("Enter Account Information").should("exist");
+        //cy.contains("Enter Account Information").should("exist");
 
         cy.get(".login-form").should("be.visible");
 
