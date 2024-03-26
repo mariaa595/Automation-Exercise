@@ -243,7 +243,7 @@ describe("PlaceOrder", ()=>{
         // 16. Click 'Delete Account' button
         // 17. Verify 'ACCOUNT DELETED!' and click 'Continue' button
     })
-    it.only("TC 23: Verify address details in checkout page ",()=>{
+    it("TC 23: Verify address details in checkout page ",()=>{
         // 3. Verify that home page is visible successfully
         cy.get('a[href="/login"]').should("be.visible");
         // 4. Click 'Signup / Login' button
