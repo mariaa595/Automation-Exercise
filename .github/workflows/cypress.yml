@@ -10,7 +10,8 @@ jobs:
         uses: cypress-io/github-action@v6
         with:
           #start: npm run test:contacts
-          start: npm run test
+          #start: npm run test
+          start: npm run test:cloud
 #   download-run:
 #     runs-on: ubuntu-latest
 #     steps:

@@ -11,7 +11,9 @@
     "test:download-file": "npx cypress run --spec cypress/e2e/downloadInvoice.cy.js",
     "test:products": "npx cypress run --spec cypress/e2e/Products.cy.js",
     "test:subscriptions": "npx cypress run --spec cypress/e2e/Subscription.cy.js",
-    "test": "npx cypress open"
+    "test": "npx cypress open",
+    "test:cloud":"npx cypress run --record --key 0657bc1a-3ed4-4dce-a72e-6cd8f7972707"
+
   },
   "keywords": [],
   "author": "",
