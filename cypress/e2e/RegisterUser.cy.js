@@ -72,7 +72,7 @@ describe("Signin/Signup", () => {
     cy.get('[data-qa="create-account"]').click();
 
     //14. Verify that 'ACCOUNT CREATED!' is visible
-    cy.contains("Account Created!").should("exist");
+    cy.contains("Account Created!").should("be.visible");
 
     cy.get('[data-qa="account-created"]').should("be.visible");
 

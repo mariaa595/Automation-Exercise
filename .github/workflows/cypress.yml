@@ -9,67 +9,67 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@v6
         with:
-          #start: npm run test:contacts
+          start: npm run test:contacts
           #start: npm run test
-          start: npm run test:cloud
-#   download-run:
-#     runs-on: ubuntu-latest
-#     steps:
-#     - name: Checkout
-#       uses: actions/checkout@v4
-#     - name: Cypress run
-#       uses: cypress-io/github-action@v6
-#       with:
-#         start: npm run test:download-file
-#   placeorder-run:
-#     runs-on: ubuntu-latest
-#     steps:
-#     - name: Checkout
-#       uses: actions/checkout@v4
-#     - name: Cypress run
-#       uses: cypress-io/github-action@v6
-#       with:
-#         start: npm run test:place-order    
+          #start: npm run test:cloud
+  download-run:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+    - name: Cypress run
+      uses: cypress-io/github-action@v6
+      with:
+        start: npm run test:download-file
+  placeorder-run:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+    - name: Cypress run
+      uses: cypress-io/github-action@v6
+      with:
+        start: npm run test:place-order    
   
-#   products-run:
-#     runs-on: ubuntu-latest
-#     steps:
-#     - name: Checkout
-#       uses: actions/checkout@v4
-#     - name: Cypress run
-#       uses: cypress-io/github-action@v6
-#       with:
-#         start: npm run test:products 
+  products-run:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+    - name: Cypress run
+      uses: cypress-io/github-action@v6
+      with:
+        start: npm run test:products 
 
-#   register-run:
-#     runs-on: ubuntu-latest
-#     steps:
-#     - name: Checkout
-#       uses: actions/checkout@v4
-#     - name: Cypress run
-#       uses: cypress-io/github-action@v6
-#       with:
-#         start: npm run test:register-user 
+  register-run:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+    - name: Cypress run
+      uses: cypress-io/github-action@v6
+      with:
+        start: npm run test:register-user 
       
 
-#   subscription-run:
-#     runs-on: ubuntu-latest
-#     steps:
-#       - name: Checkout
-#         uses: actions/checkout@v4
-#       - name: Cypress run
-#         uses: cypress-io/github-action@v6
-#         with:
-#           start: npm run test:subscriptions
+  subscription-run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Cypress run
+        uses: cypress-io/github-action@v6
+        with:
+          start: npm run test:subscriptions
 
 
 
-#   testcase-run:
-#       runs-on: ubuntu-latest
-#       steps:
-#       - name: Checkout
-#         uses: actions/checkout@v4
-#       - name: Cypress run
-#         uses: cypress-io/github-action@v6
-#         with:
-#             start: npm run test:testcases 
+  testcase-run:
+      runs-on: ubuntu-latest
+      steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Cypress run
+        uses: cypress-io/github-action@v6
+        with:
+            start: npm run test:testcases 
